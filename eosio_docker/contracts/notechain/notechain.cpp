@@ -62,7 +62,7 @@ class dataChain : public eosio::contract {
     using contract::contract;
 
     /// @abi action
-    void settemplate( account_name _client, std::vector<category> _permissions ) {
+    void settemplate( account_name _client, std::vector<category> _permissions, std::string _client_name ) {
       require_auth( _client );
 
       //check client exists
@@ -76,6 +76,7 @@ class dataChain : public eosio::contract {
         templates.emplace(_client, [&](auto &templ) {
           templ.client = _client;
           templ.permissions = _permissions;
+          client_name = _client_name;
         });
       }else{
         //update

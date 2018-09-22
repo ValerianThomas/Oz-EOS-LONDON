@@ -110,9 +110,18 @@ class TemplateGenerator extends React.Component {
                         className={"btn btn-dark col-12 mb-2"}
                         onClick={() => this.createCategory()}>createCategory
                     </button>
+
+                    <button
+                        className={"btn btn-dark col-12 mb-2"}
+                        onClick={() => this.saveTemplate()}>sauver mon template
+                    </button>
                 </div>
             </div>
         )
+    }
+
+    saveTemplate() {
+        //call MAX SERVICE;
     }
 }
 

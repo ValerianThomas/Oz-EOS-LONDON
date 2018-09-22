@@ -4,7 +4,7 @@ import settings from "./settings";
 
 export default async function setTemplate(accountIndex, data){
 	const {name, privateKey, publicKey} = accounts[accountIndex];
-	const eos = Eos({httpEndpoint: settings.httpEndpoint, "privateKey": privateKey});
+	const eos = Eos({httpEndpoint: settings.httpEndpoint, "keyProvider": privateKey});
 	const result = await eos.transaction({
 		actions: [{
         account: settings.contractAccount,

@@ -4,7 +4,7 @@ import settings from "./settings";
 
 export default async function findByUser(accountIndex, success=() => {}, error = () => {}){
 	const {name, privateKey, publicKey} = accounts[accountIndex];
-	const eos = Eos({httpEndpoint: settings.httpEndpoint, "privateKey": privateKey});
+	const eos = Eos({httpEndpoint: settings.httpEndpoint, "keyProvider": privateKey});
 	let ret = await eos.getTableRows({
 	  "json": true,
       "code": settings.contractAccount,

@@ -7,41 +7,51 @@ class TemplateGenerator extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            permissions: {},
+            permissions: {
+                client: "",
+                description: "",
+                categories: []
+            },
             permission: "",
             description: "",
             currentCategoryName: "",
-            category: ""
-        };
+            category: "",
+            categoryDescription: ""
+        }
     }
 
-    /*
-        addPermisson() {
-            this.addElementToCategory(
-                this.state.currentCategoryName,
-                this.state.permission,
-                this.state.description
-            )
-            this.setState({permission: ""})
-            this.setState({description: ""})
-        }*/
+    saveTemplate() {
+
+    }
 
     createCategory() {
         let permissions = this.state.permissions;
-        permissions[this.state.category] = {}
+        permissions.categories.push({
+            name: this.state.category,
+            description: this.state.categoryDescription,
+            permissions: []
+        })
         this.setState({permissions})
         this.setState({currentCategoryName: this.state.category})
         console.log(this.state);
     }
 
+
     addPermissionToCategory() {
+        console.log(this.state);
         let permissions = this.state.permissions
-        _.assign(permissions[this.state.currentCategoryName], {
-            [this.state.permission]: {
-                status: false,
-                description: this.state.description
+        console.log("ok", permissions.categories);
+        console.log(typeof(permissions.categories));
+        permissions.categories.map(category => {
+            if (category.name === this.state.currentCategoryName) {
+                category.permissions.push({
+                    name: this.state.permission,
+                    status: false,
+                    description: this.state.description
+                })
             }
-        })
+        });
+
         this.setState({permissions})
         console.log(this.state);
     }
@@ -87,10 +97,10 @@ class TemplateGenerator extends React.Component {
 
                         </div>
                         <div>
-                            <h4 className={"text-muted"}>Desccription</h4>
-                            <input type="password"
+                            <h4 className={"text-muted"}>Description</h4>
+                            <input type="text"
                                    className={"form-control mb-4"}
-                                   value={this.state.escription}
+                                   value={this.state.description}
                                    onChange={ev => this.setState({description: ev.target.value})}
                                    required
                             />
@@ -100,28 +110,26 @@ class TemplateGenerator extends React.Component {
                         className={"btn btn-dark col-12 mb-2"}
                         onClick={() => console.log(this.state)}>log state
                     </button>
-
                     <button
                         className={"btn btn-dark col-12 mb-2"}
                         onClick={() => this.addPermissionToCategory()}>addPermission
                     </button>
-
                     <button
                         className={"btn btn-dark col-12 mb-2"}
                         onClick={() => this.createCategory()}>createCategory
                     </button>
-
                     <button
                         className={"btn btn-dark col-12 mb-2"}
                         onClick={() => this.saveTemplate()}>sauver mon template
                     </button>
                 </div>
+                {/*<div>
+                    {this.state.permissions.map( el => {
+
+                    })}
+                </div>*/}
             </div>
         )
-    }
-
-    saveTemplate() {
-        //call MAX SERVICE;
     }
 }
 

@@ -15,15 +15,16 @@ class TemplateGenerator extends React.Component {
         };
     }
 
-    addPermisson() {
-        this.addElementToCategory(
-            this.currentCategoryName,
-            this.state.permission,
-            this.state.description
-        )
-        this.setState({permission: ""})
-        this.setState({description: ""})
-    }
+    /*
+        addPermisson() {
+            this.addElementToCategory(
+                this.state.currentCategoryName,
+                this.state.permission,
+                this.state.description
+            )
+            this.setState({permission: ""})
+            this.setState({description: ""})
+        }*/
 
     createCategory() {
         let permissions = this.state.permissions;
@@ -36,9 +37,9 @@ class TemplateGenerator extends React.Component {
     addPermissionToCategory() {
         let permissions = this.state.permissions
         _.assign(permissions[this.state.currentCategoryName], {
-            [this.state.permissions]: {
+            [this.state.permission]: {
                 status: false,
-                descrption: this.state.description
+                description: this.state.description
             }
         })
         this.setState({permissions})

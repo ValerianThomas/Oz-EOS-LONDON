@@ -9,6 +9,11 @@ import accounts from "../eos/accounts";
 
 import findPermByUserAndClient from "../eos/findPermByUserAndClient";
 import findPermsByUser from "../eos/findPermsByUser";
+import Category from './../components/Category';
+import SideBar from '../components/sideBar/SideBar';
+import HeaderCompany from './../components/header/HeaderCompany';
+import Permission from './../components/permission/Permission';
+
 
 // Index component
 class Index extends Component {
@@ -29,9 +34,17 @@ class Index extends Component {
   render() {
 
     return (
-      <div>
-        <p>hello</p>
+      <div className="category-content">
+      <div className="row">
+    
+      <SideBar />
+      <Category />
+      <div className="container-wrapper col-lg">
+      <HeaderCompany />
+     <Permission />
+     </div>
       </div>
+    </div>
     );
   }
 

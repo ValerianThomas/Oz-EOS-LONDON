@@ -25,7 +25,7 @@ class dataChain : public eosio::contract {
     struct templ {
       uint64_t prim_key;
       account_name client;
-      std::string client_name
+      std::string client_name;
       std::vector<category> permissions;
 
       auto primary_key() const { return prim_key; }
@@ -62,7 +62,7 @@ class dataChain : public eosio::contract {
     using contract::contract;
 
     /// @abi action
-    void settemplate( account_name _client, std::vector<category> _permissions ) {
+    void settemplate( account_name _client, std::vector<category> _permissions, std::string _client_name ) {
       require_auth( _client );
 
       //check client exists
@@ -76,6 +76,7 @@ class dataChain : public eosio::contract {
         templates.emplace(_client, [&](auto &templ) {
           templ.client = _client;
           templ.permissions = _permissions;
+          templ.client_name = _client_name;
         });
       }else{
         //update

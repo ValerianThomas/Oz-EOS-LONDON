@@ -1,6 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import TemplateGenerator from "./screens/TemplateGenerator";
+import TemplateGenerator from "./pages/index";
 
 class App extends React.Component {
 

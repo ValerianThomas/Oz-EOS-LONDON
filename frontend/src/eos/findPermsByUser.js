@@ -2,7 +2,7 @@ import Eos from 'eosjs'; // https://github.com/EOSIO/eosjs
 import accounts from "./accounts";
 import settings from "./settings";
 
-export default async function findByUser(accountIndex, user){
+export default async function findByUser(accountIndex){
 	const {name, privateKey, publicKey} = accounts[accountIndex];
 	const eos = Eos({"keyProvider": privateKey, httpEndpoint: settings.httpEndpoint});
 	let ret = await eos.getTableRows({
@@ -13,7 +13,7 @@ export default async function findByUser(accountIndex, user){
 		"limit": 100,
 		"index_postion": 1,
 		"key_type": "name",
-		"table_key": user,
+		"table_key": name,
 	})
 	return ret;
 }

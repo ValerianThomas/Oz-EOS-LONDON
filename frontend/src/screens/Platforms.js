@@ -27,8 +27,9 @@ export default class Platforms extends React.Component {
             all = all.rows;
             let used = await findPermsByUser(0);
             used = used.rows;
+            let usedIds = used.map((elem) => {return elem.client});
             let avaible = all.filter((elem) => {
-                return !((used.map((it) => { return it.prim_key }).includes(elem.prim_key)))
+                return !(usedIds.includes(elem.client));
             });
             this.setState((prev) => { return {...prev, loading: false, avaible: avaible, trusted: used} });
         }catch(err){
@@ -46,7 +47,6 @@ export default class Platforms extends React.Component {
     }
 
 	render(){
-		
 		let gridData = this.state.actView === "myPlatform" ? this.state.trusted : this.state.avaible;
 
 		return(

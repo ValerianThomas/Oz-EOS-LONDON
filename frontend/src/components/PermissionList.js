@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import Switch from "react-switch";
 
 export default class PermissionList extends Component {
-  
   render() {
     const {permissions}= this.props
     return (
-
       <div className="permission-container">
       { permissions.map((permission,index)=>(
         <div className="permission" key={index}>

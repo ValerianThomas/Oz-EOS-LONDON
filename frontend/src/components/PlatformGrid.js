@@ -4,7 +4,6 @@ import {Link, Redirect} from "react-router-dom";
 
 export default class PlatformGrid extends React.Component{
 	render(){
-		console.log(this.props.data);
 		return(
 				<div className="row platformRow">
 					{this.props.data.map((item, index) => (

@@ -27,7 +27,8 @@ class TemplateGenerator extends React.Component {
 
     async saveTemplate(e) {
         e.preventDefault();
-        await setTemplate(0, this.props.client, {body: this.state.permissions})
+        console.log(this.state);
+        await setTemplate(5, {body: this.state.permissions.categories, name: "whatsapp", picture: "http://www.radiocassinostereo.com/wp-content/uploads/2015/02/whatsapp_social_circle-512.png"})
     }
 
     createCategory(ev) {
@@ -64,7 +65,7 @@ class TemplateGenerator extends React.Component {
             if (category.name === this.state.currentCategoryName) {
                 category.permissions.push({
                     name: this.state.permission,
-                    status: 0,
+                    state: 0,
                     description: this.state.description,
                 })
             }

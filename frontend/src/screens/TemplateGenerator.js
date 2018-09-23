@@ -25,9 +25,7 @@ class TemplateGenerator extends React.Component {
     }
 
     async saveTemplate() {
-        //setTemplate(0, this.props.client, this.state.permissions)
-        let result = await setTemplate(2, this.state.permissions)
-        console.log(result);
+        setTemplate(0, this.props.client, this.state.permissions)
     }
 
     createCategory() {

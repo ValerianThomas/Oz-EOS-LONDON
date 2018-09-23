@@ -29,25 +29,6 @@ export default class Permissions extends React.Component {
     }
 
     async componentDidMount(){
-
-        let result = await setTemplate(1, {name: "facebook", body: [
-          {name: "personnal", description: "personnal information", permissions: [
-            {name: "getUsername", description: "fetch your username", state: 0}
-          ]},
-          {name: "personnal2", description: "personnal2 information", permissions: [
-            {name: "getUserphon", description: "fetch your userphon", state: 0}
-          ]}
-        ]})
-        result = await setPermissions(0, accounts[1].name, [
-          {name: "personnal", description: "personnal information", permissions: [
-            {name: "getUsername", description: "fetch your username", state: 1}
-          ]}
-            ,
-          {name: "personnal2", description: "personnal2 information", permissions: [
-            {name: "getUserphon", description: "fetch your userphon", state: 0}
-          ]}
-        ])
-
         this.setState((prev) => {return {...prev, loading: true}});
         try{
             let permissions = await findPermByUserAndClient(accounts[0].name, this.props.client || accounts[1].name);
@@ -84,7 +65,7 @@ export default class Permissions extends React.Component {
                         <SideBar />
                         <CategoryList categories={this.state.body.categories} onSelect={(index) => { this.setState((prev) => {return { ...prev, selectedCategory: index}}) }} />
                         <div className="container-wrapper col-lg">
-                            <HeaderCompany />
+                            <HeaderCompany client_name={this.state.body.client_name} />
                             {
                                 this.state.body && this.state.body.categories.length > 0 ?
                                 <PermissionList permissions={this.state.body.categories[this.state.selectedCategory].permissions}

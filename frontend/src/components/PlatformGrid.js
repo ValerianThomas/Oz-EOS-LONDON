@@ -1,11 +1,14 @@
 import React from 'react';
+import {Link, Redirect} from "react-router-dom";
 
-const data = [{client_name:"Coca-cola"},{client_name:"Coca-cola"},{client_name:"Coca-cola"}]
+
 export default class PlatformGrid extends React.Component{
 	render(){
 		return(
 				<div>
-					{data.map(item => (<p>{item.client_name}</p>))}
+					{this.props.data.map((item, index) => (
+						<Link to={"/permissions/"+item.client} key={index}>{item.client_name}</Link>
+					))}
 				</div>
 			)
 	}

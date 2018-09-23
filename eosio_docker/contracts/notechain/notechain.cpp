@@ -44,6 +44,7 @@ class dataChain : public eosio::contract {
       account_name user;
       bool dirty;
       std::vector<category> categories;
+      std::string client_name;
     
       auto primary_key() const { return prim_key; }
       
@@ -128,11 +129,23 @@ class dataChain : public eosio::contract {
       }
 
       if( !found ){
+
+        std::string client_name = "";
+
+        templtable templates(_self, _self);
+        auto client_index = templates.get_index<N(client)>();
+        auto client_itr = client_index.find(_client);
+
+        if(client_itr != client_index.end()){
+          client_name = client_itr->client_name;
+        }
+
         thrusts.emplace(_user, [&](auto &thrust) {
           thrust.client = _client;
           thrust.user = _user;
           thrust.categories = _categories;
           thrust.dirty = false;
+          thrust.client_name = client_name;
         });
       }
 

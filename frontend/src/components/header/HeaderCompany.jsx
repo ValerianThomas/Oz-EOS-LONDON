@@ -6,7 +6,7 @@ import React, { Component } from 'react'
       <div className="header-company ">
           <div className="company-name">
           <img src="" alt=""/>
-              <h2>Google</h2>
+              <h2>{this.props.client_name}</h2>
 
           </div>
           <div className="head-title">

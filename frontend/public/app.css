@@ -1,61 +1,84 @@
-*{
-  font-family: sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800');
+
+* {
+    font-family: sans-serif;
 }
 
-
-.category__container{
-  display: flex;
-  flex-direction: column;
-}
-.category__container, .category{
-  
-  height: auto;
-  background-color: #F8F8F8;
-  max-width: 345px;
-  font-size:14px
+.category__container {
+    display: flex;
+    flex-direction: column;
 }
 
-.category__container, .category, category_title, h3{
-font-size: 18px;
-color:#3E3E3E;
+.category__container, .category {
+
+    height: auto;
+    background-color: #F8F8F8;
+    max-width: 345px;
+    font-size: 14px
 }
 
-.sideBar{
-  background-color: #000;
-  height: 100%;
-  width: 65px;
-  height: 100vh;
+.category__container, .category, category_title, h3 {
+    font-size: 18px;
+    color: #3E3E3E;
 }
 
-.avatar{
-  max-width: 30px;
-  height: 30px;
-  width: 30px;
+.sideBar {
+    background-color: #000;
+    height: 100%;
+    width: 65px;
+    height: 100vh;
 }
 
-
-.header-company{
-  height: 387px;
-  background: linear-gradient(183.5deg, #614896 8.41%, rgba(119, 101, 157, 0.71863) 59.09%, rgba(175, 175, 175, 0) 126.02%);
+.avatar {
+    max-width: 30px;
+    height: 30px;
+    width: 30px;
 }
 
-.row-container{
-  display: flex;
-  width: 100%;
-  align-items: center;
-  align-self: center;
+.header-company {
+    height: 387px;
+    background: linear-gradient(183.5deg, #614896 8.41%, rgba(119, 101, 157, 0.71863) 59.09%, rgba(175, 175, 175, 0) 126.02%);
 }
-.row-permission{
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  max-width: 1280px;
-  width: 100%;
+
+.row-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    align-self: center;
 }
-.permission-title{
-  font-size: 18px;
+
+.row-permission {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1280px;
+    width: 100%;
 }
-.permission-description{
-  font-size: 18px;
-  color: #4D4D4D;
+
+.permission-title {
+    font-size: 18px;
+}
+
+.permission-description {
+    font-size: 18px;
+    color: #4D4D4D;
+}
+
+.col-template {
+    height: 100vh;
+    background: #ededed;
+}
+
+.btn {
+    border-radius: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.btnSuccess {
+    background: #2A2A2A;
+}
+
+.template-col-title{
+    border-bottom: white;
 }

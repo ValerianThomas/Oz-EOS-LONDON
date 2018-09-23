@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import setTemplate from "../eos/setTemplate";
 import getAllTemplates from "../eos/getAllTemplates";
@@ -18,35 +18,41 @@ import Permission from './../components/permission/Permission';
 // Index component
 class Index extends Component {
 
-  async componentDidMount(){
-    let result = await setTemplate(0, {name: "facebook", body: [
-      {name: "personnal", description: "personnal information", permissions: [
-        {name: "getUsername", description: "fetch your username", state: 0}
-      ]}
-    ]})
-    result = await setPermissions(1, accounts[0].name, [
-      {name: "personnal", description: "personnal information", permissions: [
-        {name: "getUsername", description: "fetch your username", state: 1}
-      ]}
-    ])
-  }
+    async componentDidMount() {
+        let result = await setTemplate(0, {
+            name: "facebook", body: [
+                {
+                    name: "personnal", description: "personnal information", permissions: [
+                        {name: "getUsername", description: "fetch your username", state: 0}
+                    ]
+                }
+            ]
+        })
+        result = await setPermissions(1, accounts[0].name, [
+            {
+                name: "personnal", description: "personnal information", permissions: [
+                    {name: "getUsername", description: "fetch your username", state: 1}
+                ]
+            }
+        ])
+    }
 
-  render() {
+    render() {
 
-    return (
-      <div className="category-content">
-      <div className="row">
-    
-      <SideBar />
-      <Category />
-      <div className="container-wrapper col-lg">
-      <HeaderCompany />
-     <Permission />
-     </div>
-      </div>
-    </div>
-    );
-  }
+        return (
+            <div className="category-content">
+                <div className="row">
+
+                    <SideBar/>
+                    <Category/>
+                    <div className="container-wrapper col-lg">
+                        <HeaderCompany/>
+                        <Permission/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
 }
 

@@ -27,8 +27,11 @@ class TemplateGenerator extends React.Component {
 
     async saveTemplate(e) {
         e.preventDefault();
-        console.log(this.state);
-        await setTemplate(5, {body: this.state.permissions.categories, name: "whatsapp", picture: "http://www.radiocassinostereo.com/wp-content/uploads/2015/02/whatsapp_social_circle-512.png"})
+
+        let name = prompt("What's your company name");
+        let picture = prompt("enter company's logo url");
+
+        await setTemplate(5, {body: this.state.permissions.categories, name: name, picture: picture})
     }
 
     createCategory(ev) {
@@ -60,7 +63,6 @@ class TemplateGenerator extends React.Component {
         ev.preventDefault()
         let permissions = this.state.permissions
 
-        console.log(this.state.description);
         permissions.categories.map(category => {
             if (category.name === this.state.currentCategoryName) {
                 category.permissions.push({

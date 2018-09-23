@@ -13,11 +13,9 @@ export default async function findByUserAndClient(user, client){
             "key_type": "name",
             "table_key": user,
 	})
-      let ret = [];
       for (var i = 0; i < intermediates.rows.length; i++) {
             if(intermediates.rows[i].client === client){
-                  ret.push(intermediates.rows[i]);
+                  return intermediates.rows[i];
             }
       }
-	return ret;
 }

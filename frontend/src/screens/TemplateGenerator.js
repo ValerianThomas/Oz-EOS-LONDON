@@ -2,6 +2,10 @@ import React from 'react'
 import {Link, Redirect} from "react-router-dom";
 import _ from "lodash"
 
+import setTemplate from "../eos/setTemplate";
+
+import accounts from "../eos/accounts";
+
 class TemplateGenerator extends React.Component {
 
     constructor(props) {
@@ -20,8 +24,8 @@ class TemplateGenerator extends React.Component {
         }
     }
 
-    saveTemplate() {
-
+    async saveTemplate() {
+        setTemplate(0, this.props.client, this.state.permissions)
     }
 
     createCategory() {
@@ -46,11 +50,6 @@ class TemplateGenerator extends React.Component {
             this.setState({currentCategoryName: this.state.category})
             console.log(this.state);
         }
-
-    }
-
-    componentDidUpdate() {
-        console.log("updated");
     }
 
     addPermissionToCategory() {
@@ -59,7 +58,7 @@ class TemplateGenerator extends React.Component {
             if (category.name === this.state.currentCategoryName) {
                 category.permissions.push({
                     name: this.state.permission,
-                    status: false,
+                    status: 0,
                     description: this.state.description,
                 })
             }

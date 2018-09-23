@@ -8,18 +8,17 @@
     display: flex;
     flex-direction: column;
 }
-
-.category__container, .category {
+.category__container, .category{
 
     height: auto;
-    background-color: #F8F8F8;
+    background-color: #fcfcfc;
     max-width: 345px;
-    font-size: 14px
+    font-size:14px
 }
 
-.category__container, .category, category_title, h3 {
+.category__container, .category, .category_title, h3{
     font-size: 18px;
-    color: #3E3E3E;
+    color:#3E3E3E;
 }
 
 .sideBar {
@@ -35,32 +34,36 @@
     width: 30px;
 }
 
-.header-company {
-    height: 387px;
-    background: linear-gradient(183.5deg, #614896 8.41%, rgba(119, 101, 157, 0.71863) 59.09%, rgba(175, 175, 175, 0) 126.02%);
+
+.header-company{
+  height: 387px;
+  background: linear-gradient(183.5deg, #614896 8.41%, rgba(119, 101, 157, 0.71863) 59.09%, rgba(175, 175, 175, 0) 126.02%);
+  padding-left: 26px;
+  color: #fff;
 }
 
-.row-container {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    align-self: center;
+.header-company h3 {
+  color: #ffffff;
 }
 
-.row-permission {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    max-width: 1280px;
-    width: 100%;
+.row-container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  align-self: center;
 }
-
-.permission-title {
-    font-size: 18px;
+.row-permission{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1280px;
+  width: 100%;
 }
-
-.permission-description {
-    font-size: 18px;
+.permission-title{
+    font-size: 16px;
+}
+.permission-description{
+    font-size: 16px;
     color: #4D4D4D;
 }
 
@@ -81,4 +84,38 @@
 
 .template-col-title{
     border-bottom: white;
+}
+
+
+.PlatformsWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.category {
+  margin-bottom: 5px;
+  background-color: #F8F8F8;
+  color: #2C2C2C;
+}
+
+.selectedCaregory {
+  background-color: #e5e3e3;
+}
+
+.categoryHeader {
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.category_description {
+  color: #939393;
+  font-size: 14px;
+  text-decoration: italic;
+}
+
+.permission {
+  margin-top: 16px;
+  margin-bottom: 16px;
 }

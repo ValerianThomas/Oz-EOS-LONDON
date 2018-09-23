@@ -16,7 +16,7 @@ export default async function setPermissions(accountIndex, client, data){
         data: {
           _user: name,
           _client: client,
-          _permissions: data,
+          _categories: data,
         },
       }],
     });

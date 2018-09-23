@@ -2,6 +2,10 @@ import React from 'react'
 import {Link, Redirect} from "react-router-dom";
 import _ from "lodash"
 
+import setTemplate from "../eos/setTemplate";
+
+import accounts from "../eos/accounts";
+
 class TemplateGenerator extends React.Component {
 
     constructor(props) {
@@ -20,8 +24,10 @@ class TemplateGenerator extends React.Component {
         }
     }
 
-    saveTemplate() {
-
+    async saveTemplate() {
+        //setTemplate(0, this.props.client, this.state.permissions)
+        let result = await setTemplate(2, this.state.permissions)
+        console.log(result);
     }
 
     createCategory() {
@@ -38,22 +44,18 @@ class TemplateGenerator extends React.Component {
 
 
     addPermissionToCategory() {
-        console.log(this.state);
         let permissions = this.state.permissions
-        console.log("ok", permissions.categories);
-        console.log(typeof(permissions.categories));
         permissions.categories.map(category => {
             if (category.name === this.state.currentCategoryName) {
                 category.permissions.push({
                     name: this.state.permission,
-                    status: false,
+                    status: 0,
                     description: this.state.description
                 })
             }
         });
 
         this.setState({permissions})
-        console.log(this.state);
     }
 
     render() {
@@ -120,7 +122,7 @@ class TemplateGenerator extends React.Component {
                     </button>
                     <button
                         className={"btn btn-dark col-12 mb-2"}
-                        onClick={() => this.saveTemplate()}>sauver mon template
+                        onClick={() => {this.saveTemplate()}}>sauver mon template
                     </button>
                 </div>
                 {/*<div>

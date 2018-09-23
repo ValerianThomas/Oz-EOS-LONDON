@@ -1,7 +1,9 @@
-*{
-  font-family: "Roboto";
-}
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800');
+
+* {
+    font-family: sans-serif;
+}
 
 .category__container{
   display: flex;
@@ -20,10 +22,9 @@
   font-size:14px;
   border: 1px solid white;
 }
-
 .category__container, .category, .category_title, h3{
-font-size: 18px;
-color:#3E3E3E;
+    font-size: 18px;
+    color:#3E3E3E;
 }
 
 .sideBar{
@@ -66,7 +67,7 @@ sideBar,profil_image,img{
   margin-top: 20px;
 }
 .permission-title{
-  font-size: 16px;
+    font-size: 16px;
 }
 .permission-description{
   font-size: 18px;
@@ -84,6 +85,30 @@ sideBar,profil_image,img{
   font-size: 19px;
   color: #000;
 }
+.permission-description{
+    font-size: 16px;
+    color: #4D4D4D;
+}
+
+.col-template {
+    height: 100vh;
+    background: #ededed;
+}
+
+.btn {
+    border-radius: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.btnSuccess {
+    background: #2A2A2A;
+}
+
+.template-col-title{
+    border-bottom: white;
+}
+
 
 .PlatformsWrapper{
   display: flex;

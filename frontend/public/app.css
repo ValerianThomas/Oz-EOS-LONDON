@@ -59,3 +59,10 @@ color:#3E3E3E;
   font-size: 18px;
   color: #4D4D4D;
 }
+
+.PlatformsWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

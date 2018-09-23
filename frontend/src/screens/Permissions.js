@@ -23,7 +23,49 @@ export default class Permissions extends React.Component {
         this.state = {
             loading: false,
             error: undefined,
-            body: undefined,
+            body: [
+                {client_name: "facebook", client: accounts[0].name, categories: [
+                         {name: "personnal", description: "personnal information", permissions: [
+                           {name: "getUsername", description: "fetch your username", state: 0}
+                         ]},
+                         {name: "personnal2", description: "personnal2 information", permissions: [
+                           {name: "getUserphon", description: "fetch your userphon", state: 0}
+                         ]},
+                       ]},
+                {client_name: "twitter", client: accounts[1].name, categories: [
+                         {name: "personnal", description: "personnal information", permissions: [
+                           {name: "getUsername", description: "fetch your username", state: 0}
+                         ]},
+                         {name: "personnal2", description: "personnal2 information", permissions: [
+                           {name: "getUserphon", description: "fetch your userphon", state: 0}
+                         ]},
+                       ]},
+                {client_name: "bumkin", client: accounts[2].name, categories: [
+                         {name: "personnal", description: "personnal information", permissions: [
+                           {name: "getUsername", description: "fetch your username", state: 0}
+                         ]},
+                         {name: "personnal2", description: "personnal2 information", permissions: [
+                           {name: "getUserphon", description: "fetch your userphon", state: 0}
+                         ]},
+                       ]},
+                {client_name: "applestore", client: accounts[3].name, categories: [
+                         {name: "personnal", description: "personnal information", permissions: [
+                           {name: "getUsername", description: "fetch your username", state: 0}
+                         ]},
+                         {name: "personnal2", description: "personnal2 information", permissions: [
+                           {name: "getUserphon", description: "fetch your userphon", state: 0}
+                         ]},
+                       ]},
+                {client_name: "whatsapp", client: accounts[4].name, categories: [
+                         {name: "personnal", description: "personnal information", permissions: [
+                           {name: "getUsername", description: "fetch your username", state: 0}
+                         ]},
+                         {name: "personnal2", description: "personnal2 information", permissions: [
+                           {name: "getUserphon", description: "fetch your userphon", state: 0}
+                         ]},
+                       ]},
+                ]
+                ,
             selectedCategory: 0,
         };
     }

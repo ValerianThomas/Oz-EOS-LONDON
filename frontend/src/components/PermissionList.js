@@ -2,11 +2,42 @@ import React, { Component } from 'react'
 import Switch from "react-switch";
 
 export default class PermissionList extends Component {
-  
-  render() {
-    const {permissions}= this.props
-    return (
+  constructor(props){
+    super(props);
+    this.state ={
+      permissions:[
 
+        {
+          "id":1,
+          "permissionTitle": "Persona Data",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio pariatur quia quis aliquid odit nesciunt quaerat obcae.",
+          "checked": true
+        },
+        {  
+          "id":2,
+          "permissionTitle": "Processing",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio pariatur quia quis aliquid odit nesciunt quaerat obcae.",
+          "checked": false
+        },
+        {
+          "id":3,
+          "permissionTitle": "Right of access",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio pariatur quia quis aliquid odit nesciunt quaerat obcae.",
+          "checked": false
+        },
+        {
+          "id":4,
+          "permissionTitle": "data erasure",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio pariatur quia quis aliquid odit nesciunt quaerat obcae.",
+          "checked": true
+        }
+        
+      ] 
+    }
+  }
+  render() {
+    const {permissions}= this.state
+    return (
       <div className="permission-container">
       { permissions.map((permission,index)=>(
         <div className="permission" key={index}>

@@ -71,12 +71,18 @@ color:#3E3E3E;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 
 .category {
   margin-bottom: 5px;
   background-color: #F8F8F8;
   color: #2C2C2C;
+}
+
+.category:hover {
+  cursor: pointer;
 }
 
 .selectedCaregory {
@@ -98,3 +104,15 @@ color:#3E3E3E;
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+.platformItem {
+  margin-top: 80px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.platformRow {
+  max-width: 1280px;
+  width: 100%;
+}
+

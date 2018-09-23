@@ -3,6 +3,10 @@ import PlatformGrid from '../components/PlatformGrid'
 import getAllTemplates from "../eos/getAllTemplates";
 import findPermsByUser from "../eos/findPermsByUser";
 
+import accounts from "../eos/accounts"
+
+import NavBar from "../components/navBar";
+
 export default class Platforms extends React.Component {
 
 	constructor(props){
@@ -12,6 +16,7 @@ export default class Platforms extends React.Component {
             error: undefined,
             avaible: [],
             trusted: [],
+            actView: "myPlatform",
         }
     }
 
@@ -31,11 +36,41 @@ export default class Platforms extends React.Component {
         }
     }
 
+    switchTab(newTab){
+    	this.setState((prev) => {
+    		return {
+    			...prev,
+    			actView: newTab,
+    		}
+    	})
+    }
+
 	render(){
-		console.log(this.state)
+		
+		let gridData = this.state.actView === "myPlatform" ? this.state.trusted : this.state.avaible;
+
 		return(
-			<div className="PlatformsWrapper">
-				<PlatformGrid data={this.state.avaible.concat(this.state.trusted)}/>
+			<div>
+				<NavBar />
+				<ul className="nav nav-tabs">
+				  <li className="nav-item">
+				  	{
+				  		this.state.actView === "myPlatform" ?
+				    	<a onClick={this.switchTab.bind(this, "myPlatform")} className="nav-link active" href="#">My platform</a> :
+				    	<a onClick={this.switchTab.bind(this, "myPlatform")} className="nav-link" href="#">My platform</a>
+				  	}
+				  </li>
+				  <li className="nav-item">
+				    {
+				  		this.state.actView !== "myPlatform" ?
+				    	<a onClick={this.switchTab.bind(this, "discover")} className="nav-link active" href="#">Discover</a> :
+				    	<a onClick={this.switchTab.bind(this, "discover")} className="nav-link" href="#">Discover</a>
+				  	}
+				  </li>
+				</ul>
+				<div className="PlatformsWrapper">
+					<PlatformGrid data={gridData}/>
+				</div>
 			</div>
 			)
 	}

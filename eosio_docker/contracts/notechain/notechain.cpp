@@ -26,6 +26,7 @@ class dataChain : public eosio::contract {
       uint64_t prim_key;
       account_name client;
       std::string client_name;
+      std::string picture;
       std::vector<category> categories;
 
       auto primary_key() const { return prim_key; }
@@ -45,6 +46,7 @@ class dataChain : public eosio::contract {
       bool dirty;
       std::vector<category> categories;
       std::string client_name;
+      std::string picture;
     
       auto primary_key() const { return prim_key; }
       
@@ -63,7 +65,7 @@ class dataChain : public eosio::contract {
     using contract::contract;
 
     /// @abi action
-    void settemplate( account_name _client, std::vector<category> _categories, std::string _client_name ) {
+    void settemplate( account_name _client, std::vector<category> _categories, std::string _client_name, std::string _picture ) {
       require_auth( _client );
 
       //check client exists
@@ -75,9 +77,11 @@ class dataChain : public eosio::contract {
       if(client_itr == client_index.end()){
         //create
         templates.emplace(_client, [&](auto &templ) {
+          templ.prim_key = templates.available_primary_key();
           templ.client = _client;
           templ.categories = _categories;
           templ.client_name = _client_name;
+          templ.picture = _picture;
         });
       }else{
         //update
@@ -131,6 +135,7 @@ class dataChain : public eosio::contract {
       if( !found ){
 
         std::string client_name = "";
+        std::string picture = "";
 
         templtable templates(_self, _self);
         auto client_index = templates.get_index<N(client)>();
@@ -138,14 +143,17 @@ class dataChain : public eosio::contract {
 
         if(client_itr != client_index.end()){
           client_name = client_itr->client_name;
+          picture = client_itr->picture;
         }
 
         thrusts.emplace(_user, [&](auto &thrust) {
+          thrust.prim_key = thrusts.available_primary_key();
           thrust.client = _client;
           thrust.user = _user;
           thrust.categories = _categories;
           thrust.dirty = false;
           thrust.client_name = client_name;
+          thrust.picture = picture;
         });
       }
 

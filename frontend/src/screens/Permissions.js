@@ -10,6 +10,7 @@ import CategoryList from './../components/CategoryList';
 import SideBar from '../components/sideBar/SideBar';
 import HeaderCompany from './../components/header/HeaderCompany';
 import PermissionList from './../components/PermissionList';
+import NavBar from './../components/navBar';
 
 
 import setTemplate from "../eos/setTemplate";
@@ -32,7 +33,6 @@ export default class Permissions extends React.Component {
         this.setState((prev) => {return {...prev, loading: true}});
         try{
             let permissions = await findPermByUserAndClient(accounts[0].name, this.props.client || accounts[1].name);
-            console.log(permissions);
             this.setState((prev) => {return {...prev, loading: false, body: permissions}});
         }catch(err){
             this.setState((prev) => {return {...prev, loading: false, error: err}});
@@ -61,7 +61,6 @@ export default class Permissions extends React.Component {
         return this.state.body ?  (
             <div className="category-content">
                 <div className="row">
-
                         <SideBar />
                         <CategoryList categories={this.state.body.categories} onSelect={(index) => { this.setState((prev) => {return { ...prev, selectedCategory: index}}) }} />
                         <div className="container-wrapper col-lg">

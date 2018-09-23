@@ -11,7 +11,16 @@ import setPermissions from "./eos/setPermissions";
 class App extends React.Component {
 
     async componentDidMount(){
-        let result = await setTemplate(1, {name: "facebook", body: [
+        let result = await setTemplate(0, {picture: "aaa", name: "facebook", body: [
+          {name: "personnala", description: "personnal informatioan", permissions: [
+            {name: "getUserndzadame", description: "fetch yozdazdur username", state: 0}
+          ]},
+          {name: "persoazdnnal2", description: "persoazdaznnal2 information", permissions: [
+            {name: "getUseradzphon", description: "fetch azdazdayour userphon", state: 0}
+          ]}
+        ]})
+
+        result = await setTemplate(1, {picture: "aaa", name: "facebook", body: [
           {name: "personnal", description: "personnal information", permissions: [
             {name: "getUsername", description: "fetch your username", state: 0}
           ]},
@@ -19,6 +28,7 @@ class App extends React.Component {
             {name: "getUserphon", description: "fetch your userphon", state: 0}
           ]}
         ]})
+
         result = await setPermissions(0, accounts[1].name, [
           {name: "personnal", description: "personnal information", permissions: [
             {name: "getUsername", description: "fetch your username", state: 1}
@@ -28,6 +38,8 @@ class App extends React.Component {
             {name: "getUserphon", description: "fetch your userphon", state: 0}
           ]}
         ])
+
+
     }
 
     render() {

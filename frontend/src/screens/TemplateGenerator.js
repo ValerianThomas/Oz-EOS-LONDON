@@ -13,6 +13,7 @@ class TemplateGenerator extends React.Component {
         this.state = {
             permissions: {
                 client: "",
+                urlIcone: "",
                 description: "",
                 categories: []
             },
@@ -24,11 +25,13 @@ class TemplateGenerator extends React.Component {
         }
     }
 
-    async saveTemplate() {
+    async saveTemplate(e) {
+        e.preventDefault()
         setTemplate(0, this.props.client, this.state.permissions)
     }
 
-    createCategory() {
+    createCategory(ev) {
+        ev.preventDefault()
         let permissions = this.state.permissions;
         let exists = false
 
@@ -52,8 +55,11 @@ class TemplateGenerator extends React.Component {
         }
     }
 
-    addPermissionToCategory() {
+    addPermissionToCategory(ev) {
+        ev.preventDefault()
         let permissions = this.state.permissions
+
+        console.log(this.state.description);
         permissions.categories.map(category => {
             if (category.name === this.state.currentCategoryName) {
                 category.permissions.push({
@@ -78,6 +84,7 @@ class TemplateGenerator extends React.Component {
                               data-parent="#accordion">
                             <div className="card-body">
                                 <div>{perm.name}</div>
+                                <div>{perm.description}</div>
                             </div>
                         </div>)
                 )
@@ -123,22 +130,20 @@ class TemplateGenerator extends React.Component {
                                        className={"form-control mb-2"}
                                        value={this.state.category}
                                        onChange={ev => this.setState({category: ev.target.value})}
-                                       required
                                 />
                                 <button
                                     className={"btn btn-link col-12 mb-4 text-left"}
-                                    onClick={() => this.createCategory()}>+ Create a new category
+                                    onClick={(e) => this.createCategory(e)}>+ Create a new category
                                 </button>
                             </div>
                             <h5 className={"text-muted"}>Permission title</h5>
                             <div className={""}>
                                 <div>
-                                    <input type="email"
+                                    <input type="text"
                                            placeholder=""
                                            className={"form-control mb-2"}
                                            value={this.state.permission}
                                            onChange={ev => this.setState({permission: ev.target.value})}
-                                           required
                                     />
                                 </div>
                                 <div>
@@ -153,14 +158,13 @@ class TemplateGenerator extends React.Component {
                             </div>
                             <button
                                 className={"btn btn-link col-12 mb-4 text-left"}
-                                onClick={() => this.addPermissionToCategory()}>+ Add permission
-                                to curent category
+                                onClick={(ev) => this.addPermissionToCategory(ev)}>+ Add permission
                             </button>
                         </form>
 
                         <button
                             className={"btn text-light col-12 mt-4 btnSuccess"}
-                            onClick={() => this.saveTemplate()}>Save my template
+                            onClick={(ev) => this.saveTemplate(ev)}>Save my template
                         </button>
                     </div>
                     <div className={"col-5 mt-4"}>

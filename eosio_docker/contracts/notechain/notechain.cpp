@@ -26,7 +26,7 @@ class dataChain : public eosio::contract {
       uint64_t prim_key;
       account_name client;
       std::string client_name;
-      std::vector<category> permissions;
+      std::vector<category> categories;
 
       auto primary_key() const { return prim_key; }
       account_name get_by_client() const { return client; }
@@ -43,7 +43,7 @@ class dataChain : public eosio::contract {
       account_name client;
       account_name user;
       bool dirty;
-      std::vector<category> state;
+      std::vector<category> categories;
     
       auto primary_key() const { return prim_key; }
       
@@ -62,7 +62,7 @@ class dataChain : public eosio::contract {
     using contract::contract;
 
     /// @abi action
-    void settemplate( account_name _client, std::vector<category> _permissions, std::string _client_name ) {
+    void settemplate( account_name _client, std::vector<category> _categories, std::string _client_name ) {
       require_auth( _client );
 
       //check client exists
@@ -75,13 +75,13 @@ class dataChain : public eosio::contract {
         //create
         templates.emplace(_client, [&](auto &templ) {
           templ.client = _client;
-          templ.permissions = _permissions;
+          templ.categories = _categories;
           templ.client_name = _client_name;
         });
       }else{
         //update
         client_index.modify(client_itr, _client, [&](auto &templ) {
-          templ.permissions = _permissions;
+          templ.categories = _categories;
         });
         //flag thrust as dirty
         
@@ -104,7 +104,7 @@ class dataChain : public eosio::contract {
 
     }
 
-    void setperms( account_name _user, account_name _client, std::vector<category> _permissions ) {
+    void setperms( account_name _user, account_name _client, std::vector<category> _categories ) {
       require_auth( _user );
 
       thrusttable thrusts(_self, _self);
@@ -119,7 +119,7 @@ class dataChain : public eosio::contract {
         if(thrust_itr->client == _client){ 
           thrust_index.modify(thrust_itr, _user, [&](auto &thrust) {
             thrust.dirty = false;
-            thrust.state = _permissions;
+            thrust.categories = _categories;
           });
           found = true;
         }
@@ -131,7 +131,7 @@ class dataChain : public eosio::contract {
         thrusts.emplace(_user, [&](auto &thrust) {
           thrust.client = _client;
           thrust.user = _user;
-          thrust.state = _permissions;
+          thrust.categories = _categories;
           thrust.dirty = false;
         });
       }

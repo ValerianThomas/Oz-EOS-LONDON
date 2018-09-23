@@ -15,7 +15,7 @@ export default async function setTemplate(accountIndex, data){
         }],
         data: {
           _client: name,
-          _permissions: data.body,
+          _categories: data.body,
           _client_name: "name" in data ? data.name : "",
         },
       }],

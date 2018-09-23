@@ -21,7 +21,9 @@ class Templates extends React.Component {
         this.setState((prev) => { return {...prev, loading: true } });
         try{
             let all = await getAllTemplates();
+            all = all.rows;
             let used = await findPermsByUser(0);
+            used = used.rows;
             let avaible = all.filter((elem) => {
                 return !((used.map((it) => { return it.prim_key }).includes(elem.prim_key)))
             });
@@ -32,11 +34,11 @@ class Templates extends React.Component {
     }
 
     render() {
-        console.log(this.state);
+        console.log(this.state)
         return (
             <p>hello</p>
         )
     }
 }
 
-export default TemplateGenerator
+export default Templates
